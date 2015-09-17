@@ -1,0 +1,499 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap";
+
+$navbar-height : 80px;
+$smaller-navbar-height : 60px;
+$footer-height: 80px;
+$navbar-background: #24335a;
+$speed-ease-in-out: ease-in-out;
+$orange: #f47e58;
+$light-blue: #84cfcd;
+
+* {
+	outline:none;
+}
+
+body {
+	margin: 0;
+	padding : 0;
+	min-height: 100%;
+	width: 100%;
+	background-color : #fffbdc;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+}
+
+a , a:active , a:visited{
+	text-decoration : none;
+}
+
+a:hover {
+	text-decoration : none;
+	color: $light-blue;
+}
+
+/** All the mixins start **/
+
+@mixin border-box ($box) {
+	-webkit-box-sizeing: $box;
+		 -moz-box-sizeing: $box;
+					box-sizeing: $box;
+}
+
+* { @include border-box(border-box); }
+
+@mixin navbar($proparty , $second) {
+	-webkit-transition: $proparty $second ease-in-out;
+     -moz-transition: $proparty $second ease-in-out;;
+    	-ms-transition: $proparty $second ease-in-out;;
+    	 -o-transition: $proparty $second ease-in-out;;
+    			transition: $proparty $second ease-in-out;;
+}
+
+
+@mixin btn-color ($second , $speed) {
+	-webkit-transition: color $second $speed , background-color $second $speed;
+		 -moz-transition: color $second $speed , background-color $second $speed;
+					transition: color $second $speed , background-color $second $speed;
+}
+
+@mixin link-color($second , $speed){
+	-webkit-transition: color $second $speed;
+		 -moz-transition: color $second $speed;
+					transition: color $second $speed;
+}
+
+@mixin border-link-color($second , $speed){
+	-webkit-transition: border-color $second $speed , color $second $speed;;
+		 -moz-transition: border-color $second $speed , color $second $speed;;
+					transition: border-color $second $speed , color $second $speed;;
+}
+
+/** All the mixins end**/
+
+/** Header Style Start **/
+
+.header {
+	background-color: $navbar-background;
+	height: $navbar-height;
+}
+
+.header-content {
+	position : fixed;
+	z-index: 999;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: $navbar-height;
+	background-color: $navbar-background;
+	@include navbar (height , 300ms);
+}
+
+.header-content.smaller-header {
+	height: $smaller-navbar-height;
+}
+
+.header__logo {
+	position: absolute;
+	left:20px;
+	top: 0;
+	bottom: 0;
+	height: $navbar-height;
+	text-align : center;
+}
+
+.logo {
+  display: inline-block;
+  height: $navbar-height;
+  line-height: $navbar-height;
+  font-size: 32px;
+  color: white;
+  margin: 0;
+  padding: 0;
+  @include navbar (all , 300ms);
+}
+
+.header-content.smaller-header .logo{
+	height: $smaller-navbar-height;
+	line-height: $smaller-navbar-height;
+	font-size: 24px;
+}
+
+.nav {
+	display : inline-block;
+	position: absolute;
+	left:200px;
+	height:$navbar-height; 
+	line-height:$navbar-height;
+}
+
+.nav-ul {
+	line-height : $navbar-height;
+	list-style-type: none;
+	margin:0;
+	padding:0;
+}
+
+.nav-li {
+	display : inline-block;
+	padding: 0 15px;
+	margin:0;
+}
+
+.nav-link {
+	mergin-left: 20px;
+	color : white;
+}
+
+.header-content.smaller-header .nav{
+	height: $smaller-navbar-height;
+	line-height: $smaller-navbar-height;
+}
+
+.header-content.smaller-header .nav{
+	font-size: 14px;
+}
+
+.header__donate {
+	display : inline-block;
+	position: absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	height:$navbar-height; 
+	line-height:$navbar-height;
+}
+
+.donate-btn {
+	padding : 10px 20px;
+	border: 3px solid $orange;
+	border-radius : 5px;
+	cursor: pointer;
+	background-color: $orange;
+	color: $navbar-background;
+	@include btn-color(300ms , $speed-ease-in-out);
+}
+
+.donate-btn:hover {
+	color: $orange;
+	background-color: $navbar-background;
+}
+
+.header__menu-btn {
+	margin:0 10px;
+	padding:0;
+	cursor: pointer;
+}
+
+.fa-bars {
+	font-size:24px !important;
+	color: $navbar-background;
+}
+
+.nav-li--menu_btn {
+	background-color: $light-blue;
+	padding-left: 20px;
+	padding-right: 20x;	
+}
+
+.header-content.smaller-header .header__donate{
+	height: $smaller-navbar-height;
+	line-height: $smaller-navbar-height;
+	font-size: 14px;
+}
+
+.header-content.smaller-header .nav-li--menu_btn {
+	font-size: 15px;	
+}
+
+.header-content.smaller-header .nav-ul , nav-li {
+	height: $smaller-navbar-height;
+	line-height: $smaller-navbar-height;
+}
+
+.right-nav {
+	position: fixed;
+	right:-400px;
+  z-index: 20;
+  height: 100%;
+  line-height:40px;
+  background-color: $light-blue;
+  color: $navbar-background;
+  font-weight:400;
+  overflow-y : auto;
+  -webkit-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+
+/** Change Scrollbar **/
+.right-nav::-webkit-scrollbar {
+  width: 12px;
+}
+ 
+/* Track */
+.right-nav::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+.right-nav::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(36,51,90,0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+.right-nav::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(36,51,90,0.4);
+}
+
+.right-nav.active {
+	position: fixed;	
+	right: 0;
+}
+
+.right-menu__nav-nav {
+	list-style-type:none;
+	margin-right:10px;
+}
+
+.right-menu__nav-link {
+	color: $navbar-background;
+	font-size: 14px;
+	font-weight:300;
+	@include link-color(300ms , ease-in-out);
+}
+
+.right-menu__nav-link:hover {
+	color: white;
+}
+
+.right-menu {
+	list-style-type: none;
+	padding:0;
+}
+
+.right-menu__li {
+	padding: 5px 30px;
+}
+
+.right-menu__link {	
+	color: $navbar-background;
+	font-size: 20px;
+	font-weight: bold;
+  @include link-color(300ms , ease-in-out);
+}
+
+.right-menu__link:hover {
+	color: white;
+}
+
+/** Header style End **/
+
+
+/** Footer Style Start **/
+
+.footer {
+	width:100%;
+	padding-top: 0;
+	padding-bottom: 0;
+	background-color: $navbar-background;
+	color : white;
+}
+
+.footer__top {
+	position:relative;
+	height: 400px;
+}
+
+.footer__top-left {
+	position:absolute;
+	display:block;
+	z-index:10;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	padding:0;
+	overflow:hidden;	
+}
+
+.image {
+	position:absolute;
+	display: block;
+	z-index:10;
+	width:100%;
+	height:100%;
+}
+
+.blue-overlay:after {
+	content: '';
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	left:0;
+	z-index:10;
+	height:400px;
+	background-color:$navbar-background;
+	opacity: .9;
+}
+
+.footer__top-content {
+	position:absolute;
+	display:block;
+	top:40%;
+	left:0;
+	right:0;
+	bottom:auto;
+	z-index:50;
+}
+
+.footer__top-content-center {
+	width:100%;
+	text-align:center;
+}
+
+.footer__top-content-center--second {
+	padding-top:40px;
+}
+
+.footer__top-content-link {
+	margin:0 auto;
+	color:$light-blue;
+	font-size: 28px;
+	font-weight: bold;
+	@include link-color (300ms , ease-in-out);
+}
+
+.footer__top-content-link:hover {
+	color:white;
+}
+
+.footer__top-right {
+	position:absolute;
+	right:0;
+	top:0;
+	height: 400px;
+	padding-top:50px;
+	padding-left:50px;
+	background-color: $light-blue;
+}
+
+.menu {
+	padding:0;	
+}
+
+.footer__top-right-menu1 ,
+.footer__top-right-menu2 {
+	list-style-type: none;
+}
+
+.footer__top-right-menu1 {
+	border-right:1px solid rgba(0,0,0,.1);
+}
+
+.footer__top-link {
+	font-size: 14px;
+	color: $navbar-background;
+	@include link-color (300ms , ease-in-out);
+}
+
+.footer__top-link:hover {
+	color: white;	
+}
+
+.footer__top-link--first ,
+.footer__top-link--first {
+	font-size: 24px;
+	font-weight: bold;
+	vertical-align:top;
+}
+
+.footer__top-right-title {
+	margin:0;
+}
+
+.footer__top-right-li {
+	padding: 3px 20px;
+}
+
+.footer__social-network {
+	text-align:center;
+	margin-top:30px;
+}
+
+.social-icons:first-child {
+	margin-left:0;
+}
+
+.social-icons {
+	margin-left:10px;
+	padding: 4px 9px;
+	font-size: 18px;
+	color: $navbar-background;
+	border:2px solid $navbar-background;
+	border-radius: 50%;
+	@include border-link-color(300ms , ease-in-out);
+}
+
+.social-icons:hover {
+	color: white;
+	border-color:white;
+}
+
+.footer__bottom {
+	padding : 10px 20px;
+	height: $footer-height;
+	line-height: $footer-height;
+}
+
+.footer__bottom-inner {
+	text-align: left;
+}
+
+.footer__bottom-left {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.footer__bottom-right {
+	font-size: 14px;
+} 
+
+.footer__bottom-touch {
+	padding: 10px 20px;
+	border: 3px solid white;
+	border-radius: 5px;
+	color : white;
+	@include btn-color(300ms , ease-in-out);
+}
+
+.footer__bottom-touch:hover {
+	color: $navbar-background;
+	background-color: white;
+}
+
+.footer__bootom-link {
+	margin-left: 10px;
+	color: $light-blue;
+	font-size: 12px;
+}
+
+.footer__bootom-link:first-child {
+	margin-left:0;
+}
+
+.footer__bottom-copyright {
+	display: inline-block;
+	margin-left: 15px;
+}
+
+/** Footer Style End **/
