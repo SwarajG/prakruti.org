@@ -237,7 +237,7 @@ a:hover {
  
 /* Track */
 .right-nav::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
@@ -481,6 +481,10 @@ a:hover {
 	background-color: white;
 }
 
+.footer__bottom-right-link {
+	display:inline;
+}
+
 .footer__bootom-link {
 	margin-left: 10px;
 	color: $light-blue;
@@ -497,3 +501,31 @@ a:hover {
 }
 
 /** Footer Style End **/
+
+
+
+/** Header Responsive **/
+@media only screen and (max-width : 480px) {
+	.nav {
+		display:none;
+	}
+
+	.footer__bottom {
+		line-height: 40px;
+	}
+
+	.footer__bottom-left {
+		text-align : center;		
+	}
+	
+	.footer__bootom-link {
+		font-size: 10px;
+	}
+
+	.footer__bottom-copyright {
+		padding:0;
+		margin:0;
+		font-size:12px;
+		line-height: 16px;
+	}
+}
